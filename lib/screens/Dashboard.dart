@@ -2,7 +2,6 @@ import 'package:admin_panel/screens/screens_data/stylist_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
 
@@ -19,10 +18,11 @@ class _DashboardState extends State<Dashboard> {
   ButtonStyle getStylistButtonStyle(int stylistId) {
     return selectedStylist == stylistId
         ? ElevatedButton.styleFrom(
-      primary: Colors.red, // Change to red when selected
-    )
+            primary: Colors.red, // Change to red when selected
+          )
         : selectedButtonStyle;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
             children: [
               Container(
                 height: 100,
-                width: 200,
+                width: 187,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -47,15 +47,14 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Text(
                       'Total Customers',
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Divider(color: Colors.black12),
                     Text(
                       '1000',
                       style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal),
+                          fontSize: 16, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -63,7 +62,7 @@ class _DashboardState extends State<Dashboard> {
               SizedBox(width: 20),
               Container(
                 height: 100,
-                width: 200,
+                width: 187,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -76,15 +75,14 @@ class _DashboardState extends State<Dashboard> {
                   children: [
                     Text(
                       'Appointments',
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Divider(color: Colors.black12),
                     Text(
                       '0',
                       style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal),
+                          fontSize: 16, fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -106,8 +104,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Text(
                   'Upcoming Appointments',
-                  style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -115,101 +112,95 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(height: 10),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.grey),
               color: Colors.grey[200],
             ),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            SizedBox(height: 10),
-                            Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                      children:[
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              selectedStylist = 1;
-                                            });
-                                          },
-                                          child: Text('Stylist 1'),
-                                          style: getStylistButtonStyle(1),
-                                        ),
-                                        SizedBox(height: 10),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              selectedStylist = 2;
-                                            });
-                                          },
-                                          child: Text('Stylist 2'),
-                                          style: getStylistButtonStyle(2),
-                                        ),
-                                        SizedBox(height: 10),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              selectedStylist = 3;
-                                            });
-                                          },
-                                          child: Text('Stylist 3'),
-                                          style: getStylistButtonStyle(3),
-                                        ),
-                                      ]
-                                  ),
-                                  SizedBox(width: 40),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                                  if (selectedStylist != 0)
-                                    Column(
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  selectedStylist = 1;
+                                });
+                              },
+                              child: Text('Stylist 1'),
+                              style: getStylistButtonStyle(1),
+                            ),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  selectedStylist = 2;
+                                });
+                              },
+                              child: Text('Stylist 2'),
+                              style: getStylistButtonStyle(2),
+                            ),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  selectedStylist = 3;
+                                });
+                              },
+                              child: Text('Stylist 3'),
+                              style: getStylistButtonStyle(3),
+                            ),
+                          ]),
+                          if (selectedStylist != 0)
+                            Column(
+                              children: [
+                                Center(
+                                  child: Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Center(
-                                          child: Expanded(
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: StylistDetails(
-                                                    id: selectedStylist == 1
-                                                        ? '1'
-                                                        : selectedStylist == 2
-                                                        ? '2'
-                                                        : '3',
-                                                    name: selectedStylist == 1
-                                                        ? 'manoj'
-                                                        : selectedStylist == 2
-                                                        ? 'harish'
-                                                        : 'abi',
-                                                    phoneNumber: selectedStylist == 1
-                                                        ? '6385793702'
-                                                        : selectedStylist == 2
-                                                        ? '9500663203'
-                                                        : '6363252889',
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: StylistDetails(
+                                            id: selectedStylist == 1
+                                                ? '1'
+                                                : selectedStylist == 2
+                                                    ? '2'
+                                                    : '3',
+                                            name: selectedStylist == 1
+                                                ? 'manoj'
+                                                : selectedStylist == 2
+                                                    ? 'harish'
+                                                    : 'abi',
+                                            phoneNumber: selectedStylist == 1
+                                                ? '6385793702'
+                                                : selectedStylist == 2
+                                                    ? '9500663203'
+                                                    : '6363252889',
                                           ),
                                         ),
                                       ],
                                     ),
-                                ]),
-                          ]))]),
+                                  ),
+                                ),
+                              ],
+                            ),
+                        ]),
+                  ])
+            ]),
           )
         ],
       ),
-
     );
   }
 }

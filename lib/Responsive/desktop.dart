@@ -32,16 +32,14 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
             width: 50,
             fit: BoxFit.cover,
           ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           Text(
             "Scissor's",
-            style: TextStyle(fontSize: 25),
+            style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
           ),
         ]),
         actions: <Widget>[
-          CircleAvatar(
-            backgroundColor: Colors.grey,
-            radius: 20,
-          ),
+          Icon(Icons.account_circle,size: 35),
           SizedBox(
             width: 10,
           ),
@@ -62,7 +60,8 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
             elevation: 10,
             child: Column(
               children: [
-                Icon(Icons.admin_panel_settings,size: 50),
+                Padding(padding: EdgeInsets.symmetric(vertical: 15)),
+                //Icon(Icons.admin_panel_settings),
                 Text(
                   "WELCOME ADMIN",
                   style: TextStyle(fontSize: 25),

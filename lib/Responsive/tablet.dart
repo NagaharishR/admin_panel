@@ -39,13 +39,8 @@ class _TabletScaffoldState extends State<TabletScaffold> {
           ),
         ]),
         actions: <Widget>[
-          CircleAvatar(
-            backgroundColor: Colors.blueGrey,
-            radius: 20,
-          ),
-          SizedBox(
-            width: 10,
-          ),
+          Icon(Icons.account_circle,size: 35),
+
           ElevatedButton.icon(
             onPressed: () {},
             label: Text("LOGOUT"),
@@ -55,12 +50,12 @@ class _TabletScaffoldState extends State<TabletScaffold> {
       ),
       drawer: Drawer(
         backgroundColor: Colors.white,
-        elevation: 10,
+        elevation: 5,
         child: Column(
           children: [
             Padding(padding: EdgeInsets.symmetric(vertical: 25)),
             Text(
-              "Welcome",
+              "Welcome Admin",
               style: TextStyle(fontSize: 25),
             ),
             Divider(
