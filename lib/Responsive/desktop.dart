@@ -1,5 +1,7 @@
-import 'package:admin_panel/screens/history_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/Dashboard.dart';
+import '../screens/history_screen.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
 
   bool showHistory = false;
+  bool showDashboard = false;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +62,19 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
               indent: 15,
               endIndent: 15,
             ),
+
             Padding(
               padding: tilePadding,
               child: ListTile(
                 title: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      showDashboard = true;
+                      showHistory = false; // Set showHistory to false when Dashboard is selected
+                    });
+                  },
                   icon: Icon(Icons.home),
-                  label:Text("DASHBOARD"),
+                  label: Text("DASHBOARD"),
                 ),
               ),
             ),
@@ -75,6 +84,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                 title: ElevatedButton.icon(
                   onPressed: () {
                     setState(() {
+                      showDashboard = false; // Set showDashboard to false when History is selected
                       showHistory = !showHistory;
                     });
                   },
@@ -89,7 +99,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                 title: ElevatedButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.settings),
-                  label:Text("SETTINGS"),
+                  label: Text("SETTINGS"),
                 ),
               ),
             ),
@@ -112,10 +122,20 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                 prefixIcon: Icon(Icons.search_rounded),
               ),
             ),
-            if (showHistory)
-              Expanded(
-                child: HistoryScreen(), // Replace with your HistoryScreen
+            Flexible(
+              child: Column(
+                children: [
+                  if (showDashboard)
+                    Expanded(
+                      child: Dashboard(),
+                    ),
+                  if (showHistory)
+                    Expanded(
+                      child: HistoryScreen(),
+                    ),
+                ],
               ),
+            ),
           ],
         ),
       ),
