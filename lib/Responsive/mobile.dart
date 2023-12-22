@@ -41,13 +41,8 @@ class _MobileScaffoldState extends State<MobileScaffold> {
           ),
         ]),
         actions: <Widget>[
-          CircleAvatar(
-            backgroundColor: Colors.blueGrey,
-            radius: 20,
-          ),
-          SizedBox(
-            width: 10,
-          ),
+          Icon(Icons.account_circle,size: 35),
+
           ElevatedButton.icon(
             onPressed: () {},
             label: Text("LOGOUT"),
