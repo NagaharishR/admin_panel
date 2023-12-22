@@ -1,5 +1,5 @@
+import 'package:admin_panel/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/Dashboard.dart';
 import '../screens/history_screen.dart';
 
@@ -15,6 +15,11 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
 
   bool showHistory = false;
   bool showDashboard = false;
+  bool showSettings = false;
+
+  bool isDashboardSelected = false;
+  bool isHistorySelected = false;
+  bool isSettingsSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
         ]),
         actions: <Widget>[
           CircleAvatar(
-            backgroundColor: Colors.blueGrey,
+            backgroundColor: Colors.grey,
             radius: 20,
           ),
           SizedBox(
@@ -42,102 +47,166 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           ),
           ElevatedButton.icon(
             onPressed: () {},
-            label: Text("LOGOUT"),
-            icon: Icon(Icons.exit_to_app),
+            label: Text("LOGOUT",style: TextStyle(color: Colors.white),),
+            icon: Icon(Icons.exit_to_app,color:Colors.white),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.indigo,
           ),
+          )
         ],
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        elevation: 10,
-        child: Column(
-          children: [
-            Padding(padding: EdgeInsets.symmetric(vertical: 25)),
-            Text(
-              "Welcome",
-              style: TextStyle(fontSize: 25),
-            ),
-            Divider(
-              thickness: 3,
-              indent: 15,
-              endIndent: 15,
-            ),
-
-            Padding(
-              padding: tilePadding,
-              child: ListTile(
-                title: ElevatedButton.icon(
-                  onPressed: () {
-                    setState(() {
-                      showDashboard = true;
-                      showHistory = false; // Set showHistory to false when Dashboard is selected
-                    });
-                  },
-                  icon: Icon(Icons.home),
-                  label: Text("DASHBOARD"),
+      body: Row(
+        children: [
+          Drawer(
+            backgroundColor: Colors.white,
+            elevation: 10,
+            child: Column(
+              children: [
+                Icon(Icons.admin_panel_settings,size: 50),
+                Text(
+                  "WELCOME ADMIN",
+                  style: TextStyle(fontSize: 25),
                 ),
-              ),
-            ),
-            Padding(
-              padding: tilePadding,
-              child: ListTile(
-                title: ElevatedButton.icon(
-                  onPressed: () {
-                    setState(() {
-                      showDashboard = false; // Set showDashboard to false when History is selected
-                      showHistory = !showHistory;
-                    });
-                  },
-                  icon: Icon(Icons.history),
-                  label: Text("HISTORY"),
+                Divider(
+                  thickness: 3,
+                  indent: 15,
+                  endIndent: 15,
                 ),
-              ),
-            ),
-            Padding(
-              padding: tilePadding,
-              child: ListTile(
-                title: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.settings),
-                  label: Text("SETTINGS"),
+                Padding(
+                  padding: tilePadding,
+                  child: ListTile(
+                    title: ElevatedButton.icon(
+                      onPressed: () {
+                        setState(() {
+                          showDashboard = true;
+                          showHistory = false;
+                          showSettings = false;
+                          isDashboardSelected = true;
+                          isHistorySelected = false;
+                          isSettingsSelected = false;
+                        });
+                      },
+                      icon: Icon(Icons.home_outlined,
+                          color: isDashboardSelected
+                              ? Colors.white
+                              : Colors.black),
+                      label: Text(
+                        "DASHBOARD",
+                        style: TextStyle(
+                            color: isDashboardSelected
+                                ? Colors.white
+                                : Colors.black),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: isDashboardSelected ? Colors.indigo : null,
+                        onPrimary: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(color: Colors.blue),
+                Padding(
+                  padding: tilePadding,
+                  child: ListTile(
+                    title: ElevatedButton.icon(
+                      onPressed: () {
+                        setState(() {
+                          showDashboard = false;
+                          showHistory = true;
+                          showSettings = false;
+                          isDashboardSelected = false;
+                          isHistorySelected = true;
+                          isSettingsSelected = false;
+                        });
+                      },
+                      icon: Icon(Icons.history,
+                          color:
+                              isHistorySelected ? Colors.white : Colors.black),
+                      label: Text(
+                        "HISTORY",
+                        style: TextStyle(
+                            color: isHistorySelected
+                                ? Colors.white
+                                : Colors.black),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: isHistorySelected ? Colors.indigo : null,
+                        onPrimary: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
-                labelText: 'Search Bar',
-                hintText: 'Type here',
-                prefixIcon: Icon(Icons.search_rounded),
-              ),
+                Padding(
+                  padding: tilePadding,
+                  child: ListTile(
+                    title: ElevatedButton.icon(
+                      onPressed: () {
+                        setState(() {
+                          showDashboard = false;
+                          showHistory = false;
+                          showSettings = true;
+                          isDashboardSelected = false;
+                          isHistorySelected = false;
+                          isSettingsSelected = true;
+                        });
+                      },
+                      icon: Icon(Icons.settings,
+                          color:
+                              isSettingsSelected ? Colors.white : Colors.black),
+                      label: Text("SETTINGS",
+                          style: TextStyle(
+                              color: isSettingsSelected
+                                  ? Colors.white
+                                  : Colors.black)),
+                      style: ElevatedButton.styleFrom(
+                        primary: isSettingsSelected ? Colors.indigo : null,
+                        onPrimary: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Flexible(
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (showDashboard)
-                    Expanded(
-                      child: Dashboard(),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(color: Colors.blue),
+                      ),
+                      labelText: 'Search Bar',
+                      hintText: 'Type here',
+                      prefixIcon: Icon(Icons.search_rounded),
                     ),
-                  if (showHistory)
-                    Expanded(
-                      child: HistoryScreen(),
+                  ),
+                  Flexible(
+                    child: Column(
+                      children: [
+                        if (showDashboard)
+                          Expanded(
+                            child: Dashboard(),
+                          ),
+                        if (showHistory)
+                          Expanded(
+                            child: HistoryScreen(),
+                          ),
+                        if (showSettings)
+                          Expanded(
+                            child: SettingsScreen(),
+                          )
+                      ],
                     ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
