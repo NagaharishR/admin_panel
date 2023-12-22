@@ -13,7 +13,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   int selectedStylist = 0;
   ButtonStyle selectedButtonStyle = ElevatedButton.styleFrom(
-    primary: Colors.blue, // Default color for unselected buttons
+    primary: Colors.white,
   );
 
   ButtonStyle getStylistButtonStyle(int stylistId) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/Dashboard.dart';
 import '../screens/history_screen.dart';
+import '../screens/settings_screen.dart';
 
 class TabletScaffold extends StatefulWidget {
   const TabletScaffold({Key? key}) : super(key: key);
@@ -15,6 +16,11 @@ class _TabletScaffoldState extends State<TabletScaffold> {
 
   bool showHistory = false;
   bool showDashboard = false;
+  bool showSettings = false;
+
+  bool isDashboardSelected = false;
+  bool isHistorySelected = false;
+  bool isSettingsSelected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +76,28 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                   onPressed: () {
                     setState(() {
                       showDashboard = true;
-                      showHistory = false; // Set showHistory to false when Dashboard is selected
+                      showHistory = false;
+                      showSettings = false;
+                      isDashboardSelected = true;
+                      isHistorySelected = false;
+                      isSettingsSelected = false;
                     });
                   },
-                  icon: Icon(Icons.home),
-                  label: Text("DASHBOARD"),
+                  icon: Icon(Icons.home_outlined,
+                      color: isDashboardSelected
+                          ? Colors.white
+                          : Colors.black),
+                  label: Text(
+                    "DASHBOARD",
+                    style: TextStyle(
+                        color: isDashboardSelected
+                            ? Colors.white
+                            : Colors.black),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: isDashboardSelected ? Colors.indigo : null,
+                    onPrimary: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -84,12 +107,28 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                 title: ElevatedButton.icon(
                   onPressed: () {
                     setState(() {
-                      showDashboard = false; // Set showDashboard to false when History is selected
-                      showHistory = !showHistory;
+                      showDashboard = false;
+                      showHistory = true;
+                      showSettings = false;
+                      isDashboardSelected = false;
+                      isHistorySelected = true;
+                      isSettingsSelected = false;
                     });
                   },
-                  icon: Icon(Icons.history),
-                  label: Text("HISTORY"),
+                  icon: Icon(Icons.history,
+                      color:
+                      isHistorySelected ? Colors.white : Colors.black),
+                  label: Text(
+                    "HISTORY",
+                    style: TextStyle(
+                        color: isHistorySelected
+                            ? Colors.white
+                            : Colors.black),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: isHistorySelected ? Colors.indigo : null,
+                    onPrimary: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -97,9 +136,28 @@ class _TabletScaffoldState extends State<TabletScaffold> {
               padding: tilePadding,
               child: ListTile(
                 title: ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.settings),
-                  label: Text("SETTINGS"),
+                  onPressed: () {
+                    setState(() {
+                      showDashboard = false;
+                      showHistory = false;
+                      showSettings = true;
+                      isDashboardSelected = false;
+                      isHistorySelected = false;
+                      isSettingsSelected = true;
+                    });
+                  },
+                  icon: Icon(Icons.settings,
+                      color:
+                      isSettingsSelected ? Colors.white : Colors.black),
+                  label: Text("SETTINGS",
+                      style: TextStyle(
+                          color: isSettingsSelected
+                              ? Colors.white
+                              : Colors.black)),
+                  style: ElevatedButton.styleFrom(
+                    primary: isSettingsSelected ? Colors.indigo : null,
+                    onPrimary: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -133,6 +191,10 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                     Expanded(
                       child: HistoryScreen(),
                     ),
+                  if (showSettings)
+                    Expanded(
+                      child: SettingsScreen(),
+                    )
                 ],
               ),
             ),
