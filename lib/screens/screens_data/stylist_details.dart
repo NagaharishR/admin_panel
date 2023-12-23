@@ -15,7 +15,7 @@ class StylistDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.only(left: 25),
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
