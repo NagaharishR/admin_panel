@@ -112,11 +112,6 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(height: 10),
           Container(
             width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey),
-              color: Colors.grey[200],
-            ),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Column(
